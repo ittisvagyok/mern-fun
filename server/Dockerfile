@@ -10,6 +10,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 RUN npm install --silent
+RUN npm install -g nodemon
 
 # Copy app source code
 COPY . .
