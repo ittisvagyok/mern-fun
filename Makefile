@@ -1,4 +1,4 @@
-.PHONY: up
+.PHONY:
 up:
 	docker-compose up -d
 
@@ -10,3 +10,6 @@ stop:
 
 logs:
 	docker-compose logs -f $(filter-out $@,$(MAKECMDGOALS))
+
+shell:
+	docker exec -it $(filter-out $@,$(MAKECMDGOALS)) /bin/bash
