@@ -6,15 +6,17 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.4",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
-    "express": "~4.16.1",
+    "express": "^4.16.4",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
+    "mongodb": "^4.4.1",
+    "mongoose": "^6.2.8",
     "morgan": "~1.9.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.14"
+    "nodemon": "^2.0.15"
   }
 }

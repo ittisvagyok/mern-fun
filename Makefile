@@ -13,3 +13,6 @@ logs:
 
 shell:
 	docker exec -it $(filter-out $@,$(MAKECMDGOALS)) /bin/bash
+
+node-shell:
+	docker exec -it $(filter-out $@,$(MAKECMDGOALS)) /bin/sh

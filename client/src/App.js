@@ -28,7 +28,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />          
           <h1 className="App-intro">
-            {this.state.apiResponse}
+            {this.state.apiResponse}            
           </h1>       
           <a
             className="App-link"
