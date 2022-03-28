@@ -2,8 +2,12 @@ var express = require("express");
 var router = express.Router();
 var { expenseModel } = require('../db/mongoModel');
 
-router.get("/", function(req, res, next){
-    var expenseInstance = new expenseModel({ title: 'Expense 1', ammount: '200' });
+router.post("/", function(req, res, next){
+    let newExpense = {
+        title: req.body.title,
+        ammount: req.body.ammount
+    }
+    var expenseInstance = new expenseModel(newExpense);
 
     expenseInstance.save(function (err) {
          if (err) {
