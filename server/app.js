@@ -7,10 +7,13 @@ var cors = require('cors');
 var mongoose = require('mongoose');
 var dbConfig = require('./dbConfig');
 var testModel = require('./db/testModel');
+var expenseModel = require('./db/mongoModel');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var testAPIRouter = require('./routes/testAPI');
+var addExpenseRouter = require('./routes/addExpense');
+var getExpenseRouter = require('./routes/getExpense');
 
 var app = express();
 
@@ -19,15 +22,6 @@ var mongoDB = 'mongodb://mongo:27017'
 mongoose.connect(dbConfig.ConnString, {useNewUrlParser: true, useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
-// create test instance
-var testInstance = new testModel({ title: 'Test model 3' });
-
-// Save the new model instance, passing a callback
-testInstance.save(function (err) {
-  if (err) return handleError(err);
-  // saved!
-});
 
 testModel
   .find()
@@ -54,6 +48,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/testAPI", testAPIRouter);
+app.use("/addExpense", addExpenseRouter);
+app.use("/getExpense", getExpenseRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
