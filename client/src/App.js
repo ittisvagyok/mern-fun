@@ -27,13 +27,12 @@ class App extends Component {
   }
 
   render() {
-
     return (
       <div className="container">
         <div className="App">
           <DefaultNavBar />
           <header className="App-header">
-                        
+
           </header>
           <div className="content">
             <ExpenseTable expensesData={this.state.apiResponse} />
