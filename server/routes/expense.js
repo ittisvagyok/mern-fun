@@ -1,10 +1,11 @@
 var express = require("express");
 var router = express.Router();
-var { expenseModel } = require('../db/mongoModel');
+var { expenseModel, categoryModel } = require('../db/mongoModel');
 
 router.get("/", function(req, res, next){
     expenseModel
     .find()
+    .populate('category')
     .exec(function (err, rows) {
         if (err) {
             res.send(err);
@@ -13,15 +14,16 @@ router.get("/", function(req, res, next){
     });
 });
 
-router.get("/:id", function(req, res, next){
+router.get("/:id", function(req, res, next){     
     expenseModel
     .findById(req.params.id, function(err, result){
         if(err){
             res.send(err);
         }
         res.send(result);
-    })
+    });
 });
+
 
 router.post("/", function(req, res, next){
     let data = {

@@ -35,7 +35,9 @@ class ExpenseTable extends Component {
                   <td>{index + 1}</td>
                   <td>{element.title}</td>
                   <td>{element.ammount}</td>
-                  <td>{element.category}</td>
+                  <td>{element.category ? element.category.title : <i>Uncategorized</i>
+                  }
+                  </td>
                 </tr>
               );
             })}            
