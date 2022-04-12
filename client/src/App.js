@@ -4,6 +4,7 @@ import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/css/bootstrap-grid.css';
 import '../node_modules/bootstrap/dist/css/bootstrap-reboot.css';
+import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
 import Button from 'react-bootstrap/Button';
 import ExpenseTable from './components/ExpenseTable'
 import DefaultNavBar from './components/DefaultNavBar'
