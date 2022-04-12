@@ -5,23 +5,15 @@ class ExpenseTable extends Component {
   constructor(props) {
     super(props);
 
-    this.deleteExpense = this.deleteExpense.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
-  resToArray (data) {
-    let newArray = JSON.parse(data);    
-    return(newArray);
-  }
-
-  deleteExpense(_id, e){
-    console.log(_id);
-    fetch('http://localhost:5000/expense/' + _id, { 
-      method: 'DELETE'
-    })
+  handleDelete(_id, e){
+    this.props.handleDelete(_id, e);
   }
 
   render () {
-      //console.log(this.resToArray(this.props.expensesData));      
+      console.log(this.props.expensesData);      
       return(
         <Table hover responsive>
           <thead>
@@ -37,7 +29,7 @@ class ExpenseTable extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.resToArray(this.props.expensesData).map((element, index) => {                
+            {this.props.expensesData.map((element, index) => {                
               //console.log(element);
               return(
                 <tr key={element._id}>
@@ -46,10 +38,10 @@ class ExpenseTable extends Component {
                   <td>{element.ammount}</td>
                   <td>{element.category ? element.category.title : <i>Uncategorized</i>}</td>
                   <td><i className="bi bi-pencil-square px-2" /></td>
-                  <td><i className="bi bi-x-square px-2" onClick={(e) => this.deleteExpense(element._id, e)} /></td>
+                  <td><i className="bi bi-x-square px-2" onClick={(e) => this.handleDelete(element._id, e)} /></td>
                 </tr>
               );
-            })}            
+            })}      
           </tbody>
         </Table>
       );
