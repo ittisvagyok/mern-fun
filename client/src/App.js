@@ -17,7 +17,7 @@ class App extends Component {
     this.deleteExpense = this.deleteExpense.bind(this);
   }
 
-  callApi() {
+  getExpenses() {
     fetch("http://localhost:5000/expense")
       .then(res => res.json())
       .then(res => this.setState({ apiResponse: res }))
@@ -26,7 +26,7 @@ class App extends Component {
   
 
   componentDidMount() {
-    this.callApi();
+    this.getExpenses();
   }
 
   deleteExpense(_id, e){
@@ -50,7 +50,9 @@ class App extends Component {
           <div className="content">
             <ExpenseTable expensesData={this.state.apiResponse} handleDelete={this.deleteExpense}/>
           </div>
-            <Button variant="success" className="btn-lg">No need for a button here</Button>{' '}          
+            {
+            /*<Button variant="success" className="btn-lg">No need for a button here</Button>{' '}
+            */}
         </div>
       </div>
     );

@@ -28,7 +28,8 @@ router.get("/:id", function(req, res, next){
 router.post("/", function(req, res, next){
     let data = {
         title: req.body.title,
-        ammount: req.body.ammount
+        ammount: req.body.ammount,
+        category: req.body.category
     }
     var newExpense = new expenseModel(data);
 
